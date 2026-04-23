@@ -6,7 +6,6 @@ import org.apache.flink.api.connector.dsv2.DataStreamV2SinkUtils;
 import org.apache.flink.api.connector.sink2.Sink;
 import org.apache.flink.api.connector.sink2.SinkWriter;
 import org.apache.flink.api.connector.sink2.WriterInitContext;
-import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.connector.file.src.FileSource;
 import org.apache.flink.connector.file.src.reader.TextLineInputFormat;
@@ -16,7 +15,6 @@ import org.apache.flink.datastream.api.common.Collector;
 import org.apache.flink.datastream.api.context.NonPartitionedContext;
 import org.apache.flink.datastream.api.context.PartitionedContext;
 import org.apache.flink.datastream.api.function.OneInputStreamProcessFunction;
-import org.apache.flink.datastream.api.stream.KeyedPartitionStream;
 import org.apache.flink.datastream.api.stream.NonKeyedPartitionStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +22,6 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 运行时需要添加以下 JVM 参数解决模块访问问题：
@@ -80,7 +77,7 @@ public class Main {
             public void processRecord(Tuple2<String, Integer> record, Collector<Tuple2<String, Integer>> output, PartitionedContext<Tuple2<String, Integer>> ctx) throws Exception {
                 String word = record.f0;
                 int count = wordCounts.getOrDefault(word, 0) + record.f1;
-                wordCounts.put(word, count);
+                this.wordCounts.put(word, count);
                 this.collector = output;
             }
 

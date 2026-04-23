@@ -64,7 +64,7 @@ public class Main {
         wordCount.print();
 
         // 执行
-        env.execute();
+        env.execute("wordcount4batchv1");
 
         System.out.println("This is flink2demo wordcount4batchv1...done.");
     }
