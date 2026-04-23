@@ -11,6 +11,7 @@
     <modules>
         <module>wordcount4batchv1</module>
         <module>wordcount4batchv2</module>
+        <module>wordcount4streamv1</module>
     </modules>
 
     <properties>
