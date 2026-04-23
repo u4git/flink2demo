@@ -9,10 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>wordcount4batchv1</module>
-        <module>wordcount4batchv2</module>
-        <module>wordcount4streamv1</module>
-        <module>wordcount4streamv2</module>
+        <module>file4batchv1</module>
+        <module>file4batchv2</module>
+        <module>file4streamv1</module>
+        <module>file4streamv2</module>
     </modules>
 
     <properties>
