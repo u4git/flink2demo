@@ -13,6 +13,7 @@
         <module>file4batchv2</module>
         <module>file4streamv1</module>
         <module>file4streamv2</module>
+        <module>socket4streamv1</module>
     </modules>
 
     <properties>
