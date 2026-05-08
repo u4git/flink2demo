@@ -18,5 +18,7 @@
     - reduce4streamv1
 - DataStream API window 流处理，增量聚合，aggregate() 方法，
     - aggregate4streamv1
+- DataStream API window 流处理，全窗口聚合，process() 方法，
+    - process4streamv1
 
 --- end --

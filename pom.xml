@@ -17,6 +17,7 @@
         <module>window4streamv1</module>
         <module>reduce4streamv1</module>
         <module>aggregate4streamv1</module>
+        <module>process4streamv1</module>
     </modules>
 
     <properties>
@@ -24,6 +25,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <flink.version>2.2.0</flink.version>
+        <commons-lang3.version>3.20.0</commons-lang3.version>
     </properties>
 
     <dependencyManagement>
@@ -47,6 +49,13 @@
                 <artifactId>flink-clients</artifactId>
                 <version>${flink.version}</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+                <scope>compile</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
