@@ -14,5 +14,9 @@
     - socket4streamv1
 - DataStream API window 流处理
     - window4streamv1
+- DataStream API window 流处理，增量聚合，reduce() 方法，
+    - reduce4streamv1
+- DataStream API window 流处理，增量聚合，aggregate() 方法，
+    - aggregate4streamv1
 
 --- end --
