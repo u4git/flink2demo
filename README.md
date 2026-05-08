@@ -24,5 +24,7 @@
     - reduceprocess4streamv1
 - DataStream API window 流处理，增量聚合与全窗口聚合结合，aggregate() 方法，
     - aggregateprocess4streamv1
+- DataStream API window 流处理，动态时间窗口，
+    - dynamicgap4streamv1
 
 --- end --
