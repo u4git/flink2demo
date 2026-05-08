@@ -15,6 +15,7 @@
         <module>file4streamv2</module>
         <module>socket4streamv1</module>
         <module>window4streamv1</module>
+        <module>reduce4streamv1</module>
     </modules>
 
     <properties>
