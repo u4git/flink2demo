@@ -20,5 +20,7 @@
     - aggregate4streamv1
 - DataStream API window 流处理，全窗口聚合，process() 方法，
     - process4streamv1
+- DataStream API window 流处理，增量聚合与全窗口聚合结合，aggregate() 方法，
+    - aggregateprocess4streamv1
 
 --- end --

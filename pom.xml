@@ -18,6 +18,7 @@
         <module>reduce4streamv1</module>
         <module>aggregate4streamv1</module>
         <module>process4streamv1</module>
+        <module>aggregateprocess4streamv1</module>
     </modules>
 
     <properties>
