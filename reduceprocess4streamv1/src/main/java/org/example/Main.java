@@ -3,6 +3,7 @@ package org.example;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.common.functions.FlatMapFunction;
+import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple1;
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -22,7 +23,7 @@ import java.time.Duration;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        System.out.println("This is aggregateprocess4streamv1...");
+        System.out.println("This is reduceprocess4streamv1...");
 
         // 创建环境
 
@@ -60,31 +61,13 @@ public class Main {
             }
         });
 
-        // 按时间，滚动窗口，process 方法
-        wordGroups.window(TumblingProcessingTimeWindows.of(Duration.ofSeconds(10))).aggregate(
-                new AggregateFunction<Tuple2<String, Integer>, Tuple2<String, Integer>, Tuple2<String, Integer>>() {
+        // 按时间，滚动窗口
+        wordGroups.window(TumblingProcessingTimeWindows.of(Duration.ofSeconds(10))).reduce(
+                new ReduceFunction<Tuple2<String, Integer>>() {
                     @Override
-                    public Tuple2<String, Integer> createAccumulator() {
-                        System.out.println("createAccumulator()");
-                        return null;
-                    }
-
-                    @Override
-                    public Tuple2<String, Integer> add(Tuple2<String, Integer> value, Tuple2<String, Integer> accumulator) {
-                        System.out.println("add(), value=" + value + ", accumulator=" + accumulator);
-                        return Tuple2.of(value.f0, value.f1 + (accumulator == null ? 0 : accumulator.f1));
-                    }
-
-                    @Override
-                    public Tuple2<String, Integer> getResult(Tuple2<String, Integer> accumulator) {
-                        System.out.println("getResult(), accumulator=" + accumulator);
-                        return accumulator;
-                    }
-
-                    @Override
-                    public Tuple2<String, Integer> merge(Tuple2<String, Integer> a, Tuple2<String, Integer> b) {
-                        System.out.println("merge(), a=" + a + ", b=" + b);
-                        return Tuple2.of(a.f0, a.f1 + b.f1);
+                    public Tuple2<String, Integer> reduce(Tuple2<String, Integer> value1, Tuple2<String, Integer> value2) throws Exception {
+                        System.out.println("reduce: value1=" + value1 + ", value2=" + value2);
+                        return Tuple2.of(value1.f0, value1.f1 + value2.f1);
                     }
                 },
                 new ProcessWindowFunction<Tuple2<String, Integer>, Tuple1<String>, String, TimeWindow>() {
@@ -102,8 +85,8 @@ public class Main {
 
         // 执行
 
-        env.execute("aggregateprocess4streamv1");
+        env.execute("reduceprocess4streamv1");
 
-        System.out.println("This is aggregateprocess4streamv1...done.");
+        System.out.println("This is reduceprocess4streamv1...done.");
     }
 }
