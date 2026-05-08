@@ -60,6 +60,7 @@ public class Main {
         wordGroups.window(TumblingProcessingTimeWindows.of(Duration.ofSeconds(10))).reduce(new ReduceFunction<Tuple2<String, Integer>>() {
             @Override
             public Tuple2<String, Integer> reduce(Tuple2<String, Integer> value1, Tuple2<String, Integer> value2) throws Exception {
+                System.out.println("reduce: value1=" + value1 + ", value2=" + value2);
                 return Tuple2.of(value1.f0, value1.f1 + value2.f1);
             }
         }).print("keyed, time, tumbling");
