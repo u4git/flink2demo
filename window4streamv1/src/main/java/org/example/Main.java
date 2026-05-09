@@ -92,10 +92,10 @@ public class Main {
         // wordGroups.window(TumblingProcessingTimeWindows.of(Duration.ofSeconds(10))).sum(1).print("keyed, time, tumbling");
 
         // 按时间，滑动窗口
-        // wordGroups.window(SlidingProcessingTimeWindows.of(Duration.ofSeconds(10),Duration.ofSeconds(1))).sum(1).print("keyed, time, sliding");
+        wordGroups.window(SlidingProcessingTimeWindows.of(Duration.ofSeconds(10),Duration.ofSeconds(1))).sum(1).print("keyed, time, sliding");
 
         // 按事件，滚动窗口
-        wordGroups.countWindow(5).sum(1).print("keyed, event, tumbling");
+        // wordGroups.countWindow(5).sum(1).print("keyed, event, tumbling");
 
         // 按事件，滑动窗口
         // wordGroups.countWindow(5, 1).sum(1).print("keyed, event, sliding");

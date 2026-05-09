@@ -21,6 +21,7 @@
         <module>aggregateprocess4streamv1</module>
         <module>reduceprocess4streamv1</module>
         <module>dynamicgap4streamv1</module>
+        <module>watermark4streamv1</module>
     </modules>
 
     <properties>
